@@ -1,33 +1,45 @@
 window.addEventListener('load', () => {
-    counter.count();
+    if(counter.screen.textContent == 0){
+        counter.defaultColor();
+    }
+     counter.count();
 })
  
 const counter = {
-    addButton : document.querySelector('.add'),
-    subtractButton : document.querySelector('.subtract'),
+    result : 0,
+    buttons : document.querySelectorAll('button'),
     screen: document.querySelector('.displayer'),
+    defaultColor : function(){
+        document.body.style.background = 'linear-gradient(45deg, darkslategray, goldenrod)';
+    },
     count : function(){
-        let result = 0;
-        this.screen.textContent = result;
-
-        this.addButton.addEventListener('click', () => {
-            result ++;
-            this.screen.textContent = result;
-            if(result > 0){
-                document.body.style.backgroundColor = 'coral'
-            }
-            
-            
-        })
-
-        this.subtractButton.addEventListener('click', () => {
-            result --;
-            this.screen.textContent = result;
-            if(result < 0){
-                document.body.style.backgroundColor = 'pink'
-            }
+        this.screen.textContent = 0
         
-        })      
-}
+       
+    this.buttons.forEach( button => {
+        button.addEventListener('click', () =>{
+                if(button.textContent == '+'){
+                    this.result ++;
+                    this.screen.textContent = this.result;
+                }
+                else{
+                    this.result --;
+                    this.screen.textContent = this.result;
+                }
+                if (this.screen.textContent > 0){
+            document.body.style.background = 'linear-gradient(45deg, coral, dodgerblue)'
+        }
+        else if(this.screen.textContent < 0){
+            document.body.style.background = 'linear-gradient(45deg, brown, indigo)'
+
+        } 
+        else{
+            this.defaultColor();
+        }
+        })
+       
+        
+    })
+
     
-}
+}}
