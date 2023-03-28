@@ -17,28 +17,29 @@ const counter = {
         
        
     this.buttons.forEach( button => {
-        button.addEventListener('click', () =>{
-                if(button.textContent == '+'){
+        button.addEventListener('click', (e) =>{
+                if(e.currentTarget.classList.contains('add')){
                     this.result ++;
-                    this.screen.textContent = this.result;
+                }
+                else if ( e.currentTarget.classList.contains('reset')){
+                    this.result = 0
                 }
                 else{
                     this.result --;
-                    this.screen.textContent = this.result;
                 }
+                this.screen.textContent = this.result;
                 if (this.screen.textContent > 0){
             document.body.style.background = 'linear-gradient(45deg, coral, dodgerblue)'
         }
-        else if(this.screen.textContent < 0){
-            document.body.style.background = 'linear-gradient(45deg, brown, indigo)'
+                else if(this.screen.textContent < 0){
+                    document.body.style.background = 'linear-gradient(45deg, brown, indigo)'
 
-        } 
-        else{
-            this.defaultColor();
-        }
-        })
-       
-        
+                } 
+                else{
+                    this.defaultColor();
+                }
+                })
+   
     })
 
     

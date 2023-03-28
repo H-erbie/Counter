@@ -37,6 +37,11 @@ button{
     background-color: black;
     color: white;
     cursor: pointer;
+    border-radius: 1rem;
+    transition: 0.5s ease;
+}
+button:hover{
+    background-color: rgb(24, 23, 23);
 }
 @media screen and (max-width: 450px) {
     .displayer{
